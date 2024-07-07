@@ -1,26 +1,26 @@
 <script lang="ts">
-	import type { PageSeoMetaData } from './types.ts';
+	import type { PageSeoMetaData } from './types.js';
 	import type { WebPage, WithContext } from 'schema-dts';
 
 	export let seo: PageSeoMetaData;
 	const ldJson = {
-			'@context': 'https://schema.org',
-			'@type': 'WebPage',
-			name: seo.name,
-			description: seo.description,
-			...(seo.ldImage && {
-				image: {
-					'@type': 'ImageObject',
-					url: seo.ldImage.url,
-					width: seo.ldImage.width,
-					height: seo.ldImage.height, 
-				}
-			}),
-			publisher: {
-				'@type': 'Organization',
-				...seo.organization
+		'@context': 'https://schema.org',
+		'@type': 'WebPage',
+		name: seo.name,
+		description: seo.description,
+		...(seo.ldImage && {
+			image: {
+				'@type': 'ImageObject',
+				url: seo.ldImage.url,
+				width: seo.ldImage.width,
+				height: seo.ldImage.height
 			}
-		} satisfies WithContext<WebPage>;
+		}),
+		publisher: {
+			'@type': 'Organization',
+			...seo.organization
+		}
+	} satisfies WithContext<WebPage>;
 </script>
 
 <svelte:head>
