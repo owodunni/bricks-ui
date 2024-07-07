@@ -1,26 +1,26 @@
 <script lang="ts">
-	import PageSeo from '$lib/components/seo/PageSeo.svelte';
 	import type { PageSeoMetaData } from '$lib/index.js';
+	import { PageSeo } from '$lib/index.js';
 
 	const seoMeta: PageSeoMetaData = {
-		name: '',
+		name: 'hello',
 		description: '',
-		url: '',
+		url: 'https://hello.se',
 		ldImage: {
 			name: '',
-			url: '',
-			width: '',
-			height: ''
+			url: 'https://hello.se',
+			width: 600,
+			height: 315
 		},
 		ogImage: {
 			name: '',
-			url: '',
-			width: '',
-			height: ''
+			url: 'https://hello.se',
+			width: 1920,
+			height: 1080
 		},
 		organization: {
 			name: '',
-			url: '',
+			url: 'https://hello.se',
 			email: '',
 			legalName: ''
 		}

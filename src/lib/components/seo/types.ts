@@ -19,12 +19,10 @@ const Image = (aspectRatio: number, minWidth: number, minHeight: number) =>
 			name: z.string(),
 			width: z
 				.number()
-				.min(minWidth)
-				.transform((v) => v.toString()),
+				.min(minWidth),
 			height: z
 				.number()
-				.min(minHeight)
-				.transform((v) => v.toString())
+				.min(minHeight),
 		})
 		.refine((obj) => Math.abs(Number(obj.width) / Number(obj.height) - aspectRatio) < 0.1);
 
@@ -59,8 +57,8 @@ export const ldJsonFromPageSeo = (seo: PageSeoMetaData) => {
 			image: {
 				'@type': 'ImageObject',
 				url: seo.ldImage.url,
-				width: seo.ldImage.width,
-				height: seo.ldImage.height
+				width: seo.ldImage.width.toString(),
+				height: seo.ldImage.height.toString()
 			}
 		}),
 		publisher: {

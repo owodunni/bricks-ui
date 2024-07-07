@@ -13,8 +13,8 @@
 		<meta property="og:description" content={seo.description} />
 		{#if seo.ogImage}
 			<meta property="og:image" content={seo.ogImage.url} />
-			<meta property="og:image:width" content={seo.ogImage.width} />
-			<meta property="og:image:height" content={seo.ogImage.height} />
+			<meta property="og:image:width" content={seo.ogImage.width.toString()} />
+			<meta property="og:image:height" content={seo.ogImage.height.toString()} />
 			<meta property="og:image:alt" content={seo.ogImage.name} />
 		{/if}
   <!-- eslint-disable-next-line svelte/no-at-html-tags -->
