@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import type { WebPage, WithContext } from 'schema-dts';
 
 /**
  * A organization maps to part of the {@see https://schema.org/Organization}
@@ -43,3 +44,32 @@ export const PageSeoMetaDataSchema = z.object({
 });
 
 export type PageSeoMetaData = z.infer<typeof PageSeoMetaDataSchema>;
+
+/**
+ * produces a script tag that can be injected into the header to get better seo.
+ */
+export const ldJsonFromPageSeo = (seo: PageSeoMetaData) => {
+  PageSeoMetaDataSchema.parse(seo);
+	const ldJson = {
+		'@context': 'https://schema.org',
+		'@type': 'WebPage',
+		name: seo.name,
+		description: seo.description,
+		...(seo.ldImage && {
+			image: {
+				'@type': 'ImageObject',
+				url: seo.ldImage.url,
+				width: seo.ldImage.width,
+				height: seo.ldImage.height
+			}
+		}),
+		publisher: {
+			'@type': 'Organization',
+			...seo.organization
+		}
+	} satisfies WithContext<WebPage>;
+
+  return `<script type="application/ld+json">${JSON.stringify(ldJson)}${'</'}script>`
+};
+
+
