@@ -17,12 +17,8 @@ const Image = (aspectRatio: number, minWidth: number, minHeight: number) =>
 		.object({
 			url: z.string().url(),
 			name: z.string(),
-			width: z
-				.number()
-				.min(minWidth),
-			height: z
-				.number()
-				.min(minHeight),
+			width: z.number().min(minWidth),
+			height: z.number().min(minHeight)
 		})
 		.refine((obj) => Math.abs(Number(obj.width) / Number(obj.height) - aspectRatio) < 0.1);
 
@@ -35,9 +31,9 @@ export const PageSeoMetaDataSchema = z.object({
 	/** description is the text shown when the page shows up on a surp */
 	description: z.string(),
 	url: z.string(),
-	ldImage: Image(16 / 9, 600, 300),
+	ldImage: Image(1.91, 600, 300),
 	/** Recommended size is 1200 x 630 */
-	ogImage: Image(1.91, 600, 315),
+	ogImage: Image(16 / 9, 600, 315),
 	organization: Organization
 });
 
@@ -47,7 +43,7 @@ export type PageSeoMetaData = z.infer<typeof PageSeoMetaDataSchema>;
  * produces a script tag that can be injected into the header to get better seo.
  */
 export const ldJsonFromPageSeo = (seo: PageSeoMetaData) => {
-  PageSeoMetaDataSchema.parse(seo);
+	PageSeoMetaDataSchema.parse(seo);
 	const ldJson = {
 		'@context': 'https://schema.org',
 		'@type': 'WebPage',
@@ -67,7 +63,5 @@ export const ldJsonFromPageSeo = (seo: PageSeoMetaData) => {
 		}
 	} satisfies WithContext<WebPage>;
 
-  return `<script type="application/ld+json">${JSON.stringify(ldJson)}${'</'}script>`
+	return `<script type="application/ld+json">${JSON.stringify(ldJson)}${'</'}script>`;
 };
-
-
