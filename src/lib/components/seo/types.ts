@@ -30,7 +30,7 @@ const Image = (aspectRatio: number, minWidth: number, minHeight: number) =>
 /**
  * A SeoMetaData loosely maps to part of the {@see https://schema.org/WebPage}
  */
-const PageSeoMetaData = z.object({
+export const PageSeoMetaDataSchema = z.object({
 	/** Title is shown when the page shows up on a surp */
 	name: z.string(),
 	/** description is the text shown when the page shows up on a surp */
@@ -42,4 +42,4 @@ const PageSeoMetaData = z.object({
 	organization: Organization
 });
 
-export type PageSeoMetaData = z.infer<typeof PageSeoMetaData>;
+export type PageSeoMetaData = z.infer<typeof PageSeoMetaDataSchema>;

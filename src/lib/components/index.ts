@@ -1,2 +1,2 @@
 export type * from './seo/types.js';
-export { Seo } from './seo/index.js';
+export { PageSeo, PageSeoMetaDataSchema } from './seo/index.js';

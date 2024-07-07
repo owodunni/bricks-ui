@@ -1,3 +1,3 @@
-import PageSeo from './PageSeo.svelte';
+export * as PageSeo from './PageSeo.svelte';
 
-export const Seo = { PageSeo };
+export { PageSeoMetaDataSchema } from './types.js';
