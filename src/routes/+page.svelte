@@ -1,4 +1,7 @@
 <script lang="ts">
+	import Github from '$lib/components/icons/Github.svelte';
+	import Header from '$lib/components/nav/Header.svelte';
+	import type { PageLink } from '$lib/components/nav/types.js';
 	import type { PageSeoMetaData } from '$lib/index.js';
 	import { PageSeo } from '$lib/index.js';
 
@@ -21,11 +24,51 @@
 		organization: {
 			name: '',
 			url: 'https://hello.se',
-			email: '',
+			email: 'temp@tmp.se',
 			legalName: ''
 		}
 	};
+
+	const navLinks: PageLink[] = [
+		{
+			href: 'https://someLink.se',
+			title: 'About'
+		},
+		{
+			href: 'https://someLink.se',
+			title: 'Docs'
+		},
+		{
+			href: 'https://someLink.se',
+			title: 'Profits'
+		}
+	];
 </script>
+
+<Header {navLinks}>
+	<a
+		href="/"
+		class="btn-icon btn-lg border-x-secondary-200 absolute m-0 w-32 p-0"
+		aria-label="bricks-ui"
+		slot="logo">Bricks-ui</a
+	>
+	<a
+		slot="action-extra-sm"
+		class="btn-icon relative z-10 h-8 w-8"
+		href="https://github.com/owodunni/bricks-ui"
+	>
+		<Github class="p-[2px]" />
+	</a>
+	<a
+		slot="action-extra-lg"
+		class="btn-icon m-0 hidden p-0 lg:block"
+		href="https://github.com/owodunni/bricks-ui"
+	>
+		<Github class="h-10 w-10 p-1" />
+	</a>
+	<a class="btn variant-filled" href="/" slot="action-sm"> Action! </a>
+	<a class="btn variant-filled hidden lg:block" href="/" slot="action-lg"> Action! </a>
+</Header>
 
 <PageSeo seo={seoMeta} />
 <h1>Welcome to your library project</h1>
