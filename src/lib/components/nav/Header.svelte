@@ -21,9 +21,9 @@
 	}
 </script>
 
-<header>
+<header class={clazz}>
 	<nav>
-		<Container class={`relative z-50 flex justify-between py-8 ${clazz}`}>
+		<Container class={`relative z-50 flex justify-between py-4`}>
 			<div class="relative z-10 flex items-center gap-16">
 				<slot name="logo" />
 				<div class="hidden lg:flex lg:gap-12 lg:pl-48">

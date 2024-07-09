@@ -45,13 +45,8 @@
 	];
 </script>
 
-<Header {navLinks}>
-	<a
-		href="/"
-		class="btn-icon btn-lg border-x-secondary-200 absolute m-0 w-32 p-0"
-		aria-label="bricks-ui"
-		slot="logo">Bricks-ui</a
-	>
+<Header {navLinks} class="bg-background-200">
+	<a href="/" aria-label="bricks-ui" slot="logo">Bricks-ui</a>
 	<a
 		slot="action-extra-sm"
 		class="btn-icon relative z-10 h-8 w-8"
