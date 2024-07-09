@@ -1,7 +1,7 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 
-function withOpacity(colorValue) {
-	return ({ opacityValue }) => {
+function withOpacity(colorValue: string) {
+	return ({ opacityValue }: { opacityValue: string }) => {
 		if (opacityValue !== undefined) {
 			return `rgba(${colorValue}, ${opacityValue})`;
 		}
@@ -9,7 +9,7 @@ function withOpacity(colorValue) {
 	};
 }
 
-function fromVariable(variableName) {
+function fromVariable(variableName: string) {
 	return withOpacity(`var(${variableName})`);
 }
 

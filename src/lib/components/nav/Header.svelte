@@ -6,6 +6,9 @@
 	import type { PageLink } from './types.js';
 
 	export let navLinks: PageLink[];
+	let clazz = '';
+
+	export { clazz as class };
 
 	let open = false;
 
@@ -20,7 +23,7 @@
 
 <header>
 	<nav>
-		<Container class={'relative z-50 flex justify-between py-8 '}>
+		<Container class={`relative z-50 flex justify-between py-8 ${clazz}`}>
 			<div class="relative z-10 flex items-center gap-16">
 				<slot name="logo" />
 				<div class="hidden lg:flex lg:gap-12 lg:pl-48">
